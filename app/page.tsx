@@ -62,7 +62,7 @@ export default function Home() {
         style={{ touchAction: 'pan-y' }}
       >
         {/* WebP hero with JPEG fallback */}
-        <picture className="absolute inset-0" style={{ transform: 'translateZ(0)' }}>
+        <picture className="absolute inset-0">
           <source srcSet="/racetrack-hero.webp" type="image/webp" />
           <img
             src="/racetrack-hero.jpeg"
@@ -81,28 +81,28 @@ export default function Home() {
         <div className="relative z-10 text-center px-6 sm:px-8 max-w-5xl mx-auto pt-20">
           <p
             className="text-gold text-xs font-medium uppercase tracking-widest mb-7"
-            style={{ animation: 'fadeInUp 0.6s ease 0.3s both' }}
+            style={{ animation: 'fadeInUp 0.6s ease 0.3s both', pointerEvents: 'none' }}
           >
             Executive Coaching · Leadership Development · Mentoring
           </p>
 
           <h1
             className="font-display italic text-6xl sm:text-7xl lg:text-8xl text-white leading-none tracking-tight mb-7 text-balance"
-            style={{ animation: 'fadeInUp 0.75s ease 0.5s both' }}
+            style={{ animation: 'fadeInUp 0.75s ease 0.5s both', pointerEvents: 'none' }}
           >
             Find Your Line
           </h1>
 
           <p
             className="text-white/85 text-xl sm:text-2xl font-sans font-light mb-4 max-w-2xl mx-auto leading-relaxed"
-            style={{ animation: 'fadeInUp 0.6s ease 0.75s both' }}
+            style={{ animation: 'fadeInUp 0.6s ease 0.75s both', pointerEvents: 'none' }}
           >
             Helping leaders gain clarity, confidence and direction. Mentoring for engineers building their careers in motorsport and beyond.
           </p>
 
           <p
             className="text-white/55 text-sm font-sans mb-12 tracking-wide"
-            style={{ animation: 'fadeInUp 0.6s ease 0.9s both' }}
+            style={{ animation: 'fadeInUp 0.6s ease 0.9s both', pointerEvents: 'none' }}
           >
             Based in Oxfordshire · Working with anyone, anywhere
           </p>
@@ -126,7 +126,7 @@ export default function Home() {
           </div>
           <p
             className="text-white/40 text-xs mt-6"
-            style={{ animation: 'fadeIn 0.6s ease 1.4s both' }}
+            style={{ animation: 'fadeIn 0.6s ease 1.4s both', pointerEvents: 'none' }}
           >
             Initial conversations are complimentary
           </p>
@@ -189,7 +189,7 @@ export default function Home() {
             <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
               <div className="absolute -bottom-5 -right-5 w-full h-full bg-green/12 rounded-sm" aria-hidden="true" />
               <div className="absolute -top-5 -left-5 w-2/3 h-2/3 bg-gold/10 rounded-sm" aria-hidden="true" />
-              <div className="relative aspect-[3/4] rounded-sm shadow-xl overflow-hidden">
+              <div className="relative aspect-[3/4] rounded-sm shadow-xl [contain:paint]">
                 <Image
                   src="/nicola-portrait.jpg"
                   alt="Nicola Nevill, Executive Coach and Leadership Consultant"
