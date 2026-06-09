@@ -207,44 +207,6 @@ const reviewSchemas = [
   },
 ]
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'What is executive coaching?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Executive coaching is a professional development process where a qualified coach works one-to-one with a leader to help them navigate complexity, build clarity and move forward with greater confidence and purpose.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Who is executive coaching for?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Executive coaching is for senior leaders, managers and emerging talent who want to lead with greater clarity, confidence and self-awareness. Nicola works with people across sectors and career stages.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Where does Nicola Nevill offer executive coaching?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Nicola is based in Oxfordshire and works with clients globally. Sessions are available in person in Oxfordshire and remotely worldwide.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Who is the motorsport mentoring for?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'The mentoring is for people entering motorsport or engineering, progressing in their careers, or navigating the transition of leaving a motorsport team. Doug Nevill brings close to 30 years of Formula One design experience.',
-      },
-    },
-  ],
-}
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -273,10 +235,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
         <script
           type="application/ld+json"
