@@ -58,6 +58,7 @@ export default function Home() {
       <section
         className="relative flex items-center justify-center min-h-screen [contain:paint]"
         aria-label="Hero"
+        style={{ touchAction: 'pan-y' }}
       >
         {/* WebP hero with JPEG fallback */}
         <picture className="absolute inset-0">
@@ -133,7 +134,7 @@ export default function Home() {
         <div
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
           aria-hidden="true"
-          style={{ animation: 'fadeIn 0.6s ease 1.6s both' }}
+          style={{ animation: 'fadeIn 0.6s ease 1.6s both', pointerEvents: 'none' }}
         >
           <ChevronDown size={28} className="chevron-bounce text-white/40" />
         </div>

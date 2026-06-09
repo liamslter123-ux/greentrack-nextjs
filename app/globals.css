@@ -63,6 +63,13 @@ body {
   min-height: 100dvh;
 }
 
+/* ── Prevent image drag interference on touch devices ────────────────── */
+img {
+  -webkit-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
+
 /* ── details/summary: remove default marker across all browsers ───────── */
 details > summary {
   list-style: none;
