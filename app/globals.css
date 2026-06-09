@@ -46,7 +46,7 @@
 html,
 body {
   -webkit-overflow-scrolling: touch;
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
   touch-action: pan-y;
 }
 

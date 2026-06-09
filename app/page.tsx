@@ -131,18 +131,18 @@ export default function Home() {
           </p>
         </div>
 
-        <div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          aria-hidden="true"
-          style={{ animation: 'fadeIn 0.6s ease 1.6s both', pointerEvents: 'none' }}
+        <a
+          href="#services"
+          aria-label="Scroll to services"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/40 hover:text-white/70 transition-colors duration-300"
         >
-          <ChevronDown size={28} className="chevron-bounce text-white/40" />
-        </div>
+          <ChevronDown size={24} />
+        </a>
         <div id="hero-sentinel" aria-hidden="true" />
       </section>
 
       {/* ── 2. SERVICES ──────────────────────────────────────────────────── */}
-      <section className="bg-cream py-16 sm:py-24" aria-label="Services">
+      <section id="services" className="bg-cream py-16 sm:py-24" aria-label="Services">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <p className="text-green text-xs font-medium uppercase tracking-widest mb-4">Services</p>
