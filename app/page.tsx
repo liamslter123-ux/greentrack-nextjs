@@ -9,19 +9,19 @@ export const metadata: Metadata = {
     absolute: 'Executive Coaching & Leadership Development Oxfordshire | GreenTrack',
   },
   description:
-    'Nicola Nevill offers executive coaching, leadership development and team facilitation in Oxfordshire and across the UK. Qualified coach, Henley Business School. 25+ years in high-performance environments.',
+    'Nicola Nevill offers executive coaching, leadership development and team facilitation worldwide. Based in Oxfordshire. Henley Business School qualified coach. 25+ years in high-performance environments.',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Executive Coaching & Leadership Development Oxfordshire | GreenTrack',
     description:
-      'Nicola Nevill offers executive coaching, leadership development and team facilitation in Oxfordshire. 25+ years in high-performance environments.',
+      'Nicola Nevill offers executive coaching, leadership development and team facilitation worldwide. Based in Oxfordshire. 25+ years in high-performance environments.',
     url: '/',
     images: [{ url: 'https://greentrackcc.com/racetrack-hero.jpeg' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Executive Coaching & Leadership Development Oxfordshire | GreenTrack',
-    description: 'Nicola Nevill, executive coaching and leadership development, Oxfordshire.',
+    description: 'Nicola Nevill, executive coaching and leadership development. Based in Oxfordshire, working worldwide.',
     images: ['https://greentrackcc.com/racetrack-hero.jpeg'],
   },
 }
@@ -31,7 +31,7 @@ const services = [
     Icon: Target,
     title: 'Leadership & Executive Coaching',
     description:
-      "When the path forward isn't clear, I help senior leaders find it, with greater clarity, confidence, and direction.",
+      'Gain clarity, confidence and direction as a senior leader. Nicola meets you where you are and helps you move forward with purpose.',
     href: '/coaching',
   },
   {
@@ -56,7 +56,7 @@ export default function Home() {
     <>
       {/* ── 1. HERO ───────────────────────────────────────────────────────── */}
       <section
-        className="relative flex items-center justify-center min-h-screen overflow-hidden"
+        className="relative flex items-center justify-center min-h-screen [contain:paint]"
         aria-label="Hero"
       >
         {/* WebP hero with JPEG fallback */}
@@ -95,14 +95,14 @@ export default function Home() {
             className="text-white/85 text-xl sm:text-2xl font-sans font-light mb-4 max-w-2xl mx-auto leading-relaxed"
             style={{ animation: 'fadeInUp 0.6s ease 0.75s both' }}
           >
-            Executive coaching for leaders navigating complexity. Mentoring for engineers building their careers.
+            Helping leaders gain clarity, confidence and direction. Mentoring for engineers building their careers in motorsport and beyond.
           </p>
 
           <p
             className="text-white/55 text-sm font-sans mb-12 tracking-wide"
             style={{ animation: 'fadeInUp 0.6s ease 0.9s both' }}
           >
-            Leadership, Executive &amp; Management Coaching · Team Coaching · Facilitation
+            Based in Oxfordshire · Working with anyone, anywhere
           </p>
 
           <div
@@ -113,7 +113,7 @@ export default function Home() {
               href="/contact"
               className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 min-h-[48px] bg-green text-white text-sm font-medium tracking-wide hover:bg-darkGreen transition-colors duration-200 rounded-sm"
             >
-              Explore Working Together
+              Get in Touch
             </Link>
             <Link
               href="/mentoring"
@@ -122,6 +122,12 @@ export default function Home() {
               Explore Mentoring
             </Link>
           </div>
+          <p
+            className="text-white/40 text-xs mt-6"
+            style={{ animation: 'fadeIn 0.6s ease 1.4s both' }}
+          >
+            Initial conversations are complimentary
+          </p>
         </div>
 
         <div
@@ -131,10 +137,11 @@ export default function Home() {
         >
           <ChevronDown size={28} className="text-white/40 animate-bounce" />
         </div>
+        <div id="hero-sentinel" aria-hidden="true" />
       </section>
 
       {/* ── 2. SERVICES ──────────────────────────────────────────────────── */}
-      <section className="bg-cream py-24 sm:py-32" aria-label="Services">
+      <section className="bg-cream py-16 sm:py-24" aria-label="Services">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <p className="text-green text-xs font-medium uppercase tracking-widest mb-4">Services</p>
@@ -150,8 +157,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 3. ABOUT TEASER ──────────────────────────────────────────────── */}
-      <section className="bg-white py-24 sm:py-32" aria-label="About Nicola">
+      {/* ── 3. IS THIS FOR YOU? ──────────────────────────────────────────── */}
+      <section className="bg-white py-16 sm:py-24" aria-label="Who coaching and mentoring is for">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-green text-xs font-medium uppercase tracking-widest mb-5">Who this is for</p>
+          <h2 className="font-display text-3xl sm:text-4xl text-charcoal mb-10 text-balance">
+            You might be ready for coaching if you are:
+          </h2>
+          <div className="space-y-0">
+            {[
+              'Facing a decision, transition, or change that feels significant',
+              'Carrying more than feels comfortable to share with those around you',
+              'Wanting to lead with greater clarity, confidence, and self-awareness',
+              'Feeling stuck, unclear, or like you have lost your sense of direction',
+              'Stepping into a new role and navigating new levels of complexity',
+              'Ready to invest seriously in your leadership and your future',
+            ].map((item) => (
+              <div key={item} className="flex items-start gap-4 py-4 border-b border-charcoal/8 last:border-0">
+                <div className="w-1.5 h-1.5 rounded-full bg-gold mt-2.5 flex-shrink-0" aria-hidden="true" />
+                <span className="text-charcoal/75 text-base sm:text-lg leading-relaxed">{item}</span>
+              </div>
+            ))}
+          </div>
+          <p className="text-charcoal/45 text-sm font-sans mt-8 leading-relaxed">
+            If any of these resonate, a conversation with Nicola is a good first step. Initial conversations are complimentary.
+          </p>
+        </div>
+      </section>
+
+      {/* ── 4. ABOUT TEASER ──────────────────────────────────────────────── */}
+      <section className="bg-cream py-24 sm:py-32" aria-label="About Nicola">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
@@ -203,7 +238,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 4. PULL QUOTE ────────────────────────────────────────────────── */}
+      {/* ── 5. PULL QUOTE ────────────────────────────────────────────────── */}
       <section className="bg-green py-24 sm:py-32" aria-label="Client testimonial">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div
@@ -238,16 +273,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 5. FINAL CTA ─────────────────────────────────────────────────── */}
+      {/* ── 6. FINAL CTA ─────────────────────────────────────────────────── */}
       <section className="bg-cream py-24 sm:py-32" aria-label="Call to action">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-green text-xs font-medium uppercase tracking-widest mb-5">Take the next step</p>
           <h2 className="font-display text-4xl sm:text-5xl text-charcoal mb-6 text-balance">
             Ready to Find Your Line?
           </h2>
-          <p className="text-charcoal/65 text-lg font-sans font-light leading-relaxed mb-12 max-w-xl mx-auto">
-            Whether you&rsquo;re navigating complexity as a leader or shaping your engineering career,
-            let&rsquo;s start the conversation.
+          <p className="text-charcoal/65 text-lg font-sans font-light leading-relaxed mb-4 max-w-xl mx-auto">
+            If you are at a crossroads as a leader, navigating a significant shift, or simply ready to
+            lead with greater clarity and confidence, a conversation is the right first step.
+          </p>
+          <p className="text-charcoal/40 text-sm font-sans mb-12">
+            Initial conversations are complimentary. No obligation, no commitment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link

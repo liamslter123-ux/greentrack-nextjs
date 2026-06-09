@@ -6,7 +6,7 @@ import { CheckCircle, ArrowRight } from 'lucide-react'
 export const metadata: Metadata = {
   title: { absolute: 'About Nicola Nevill | Qualified Executive Coach | GreenTrack' },
   description:
-    'Qualified Executive Coach from Henley Business School. ICF Member. Chartered Fellow CIPD. Over 25 years supporting leaders in high-performance environments across the UK.',
+    'Nicola Nevill is a qualified executive coach and leadership consultant helping leaders worldwide to lead with clarity, confidence and self-awareness. Based in Oxfordshire. Henley Business School. ICF Member. Chartered Fellow CIPD.',
   alternates: { canonical: '/about' },
   openGraph: {
     title: 'About Nicola Nevill | Qualified Executive Coach | GreenTrack',
@@ -20,6 +20,17 @@ export const metadata: Metadata = {
     description: 'Qualified Executive Coach, Henley Business School. ICF Member. Chartered CIPD.',
     images: ['https://greentrackcc.com/nicola-portrait.jpg'],
   },
+}
+
+const BASE_URL = 'https://greentrackcc.com'
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'About Nicola', item: `${BASE_URL}/about` },
+  ],
 }
 
 const qualifications = [
@@ -51,8 +62,13 @@ const philosophy = [
 export default function About() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
       {/* ── 1. HERO ───────────────────────────────────────────────────────── */}
-      <section className="bg-darkGreen pt-20 overflow-hidden" aria-label="About Nicola Nevill">
+      <section className="bg-darkGreen pt-20 [contain:paint]" aria-label="About Nicola Nevill">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-5 lg:items-end">
 
@@ -120,19 +136,20 @@ export default function About() {
             <div className="lg:pt-4">
               <p className="text-green text-xs font-medium uppercase tracking-widest mb-5">Background</p>
               <h2 className="font-display text-3xl sm:text-4xl text-charcoal mb-8 leading-snug text-balance">
-                Helping people and teams navigate complexity for over 25 years
+                Helping leaders and teams move forward with clarity for over 25 years
               </h2>
               <div className="space-y-6 text-charcoal/70 text-base sm:text-lg leading-relaxed font-sans font-light">
                 <p>
-                  With over 25 years&rsquo; experience supporting people and teams in
-                  high-performance environments, I provide coaching and leadership support to
-                  individuals and teams.
+                  I help leaders and teams move forward with clarity, confidence, and
+                  direction. Based in Oxfordshire and working with leaders worldwide, I bring over 25
+                  years of experience supporting people in high-performance environments
+                  through the challenges that matter most to them.
                 </p>
                 <p>
-                  I enable individuals and teams to step back, interpret the signals around
-                  them, and map their own line. By partnering with clients in this
-                  thought-provoking process, I help them make sense of complexity, draw
-                  insights from their experience, and move forward with focus and direction.
+                  I partner with each leader or team to understand what is happening within
+                  themselves and in the dynamics around them. Through that thought-provoking
+                  process, they gain insight, make sense of what is complex, and move forward
+                  with focus and a clearer sense of purpose.
                 </p>
                 <p>
                   My work draws on extensive organisational and life experience, alongside

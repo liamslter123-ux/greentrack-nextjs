@@ -31,6 +31,26 @@
   to   { opacity: 1; }
 }
 
+/* ── Prevent horizontal scroll sitewide ──────────────────────────────── */
+/* overflow-x: clip does NOT promote body to scroll container (unlike       */
+/* overflow-x: hidden), so window.scrollY / scroll events work correctly    */
+html,
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  overflow-x: clip;
+}
+
+/* ── 100dvh fix for mobile Safari ─────────────────────────────────────── */
+/* Tailwind's min-h-screen generates 100vh; 100dvh accounts for the        */
+/* collapsing address bar on iOS/Android Chrome                             */
+.min-h-screen {
+  min-height: 100vh; /* fallback for older browsers */
+  min-height: 100dvh;
+}
+
 /* ── details/summary: remove default marker across all browsers ───────── */
 details > summary {
   list-style: none;
