@@ -18,7 +18,6 @@ export const metadata: Metadata = {
   description:
     'Free self-assessment guides for leaders considering executive coaching or motorsport mentoring. Practical tools to help you think clearly about your next step.',
   alternates: { canonical: '/resources' },
-  robots: { index: false, follow: true },
   openGraph: {
     title: 'Resources for Leaders | GreenTrack',
     description: 'Free self-assessment resources for leaders considering executive coaching or career mentoring.',
