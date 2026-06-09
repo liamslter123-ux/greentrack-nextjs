@@ -135,7 +135,7 @@ export default function Home() {
           aria-hidden="true"
           style={{ animation: 'fadeIn 0.6s ease 1.6s both' }}
         >
-          <ChevronDown size={28} className="text-white/40 animate-bounce" />
+          <ChevronDown size={28} className="chevron-bounce text-white/40" />
         </div>
         <div id="hero-sentinel" aria-hidden="true" />
       </section>
