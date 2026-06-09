@@ -37,10 +37,12 @@
 html,
 body {
   -webkit-overflow-scrolling: touch;
+  scroll-behavior: auto;
 }
 
 body {
   overflow-x: clip;
+  overscroll-behavior: none;
 }
 
 /* ── 100dvh fix for mobile Safari ─────────────────────────────────────── */
