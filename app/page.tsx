@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Target, Users, Gauge, ChevronDown, ArrowRight } from 'lucide-react'
+import { Target, Users, Gauge, ArrowRight } from 'lucide-react'
+import ScrollToServicesButton from '@/components/ScrollToServicesButton'
 import ServiceCard from '@/components/ServiceCard'
 
 export const metadata: Metadata = {
@@ -131,13 +132,7 @@ export default function Home() {
           </p>
         </div>
 
-        <a
-          href="#services"
-          aria-label="Scroll to services"
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/40 hover:text-white/70 transition-colors duration-300"
-        >
-          <ChevronDown size={24} />
-        </a>
+        <ScrollToServicesButton />
         <div id="hero-sentinel" aria-hidden="true" />
       </section>
 
