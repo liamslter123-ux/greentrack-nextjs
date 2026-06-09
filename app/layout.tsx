@@ -5,6 +5,7 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CookieBanner from '@/components/CookieBanner'
+import { Analytics } from '@vercel/analytics/react'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     template: '%s | GreenTrack',
   },
   description:
-    'Nicola Nevill offers executive coaching, leadership development and team facilitation in Oxfordshire. Qualified coach, Henley Business School. 25+ years in high-performance environments.',
+    'Nicola Nevill offers executive coaching, leadership development and team facilitation worldwide. Based in Oxfordshire. Henley Business School qualified. 25+ years in high-performance environments.',
   openGraph: {
     siteName: 'GreenTrack Coaching & Consulting',
     type: 'website',
@@ -56,10 +57,12 @@ export const metadata: Metadata = {
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': `${BASE_URL}/#organization`,
   name: 'GreenTrack Coaching & Consulting Ltd',
   url: BASE_URL,
   logo: `${BASE_URL}/logo.png`,
   email: 'nicola@greentrackcc.com',
+  foundingDate: '2024',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '2 The Old Estate Yard, High Street, East Hendred',
@@ -68,20 +71,37 @@ const organizationSchema = {
     postalCode: 'OX12 8JY',
     addressCountry: 'GB',
   },
+  sameAs: [
+    'https://www.linkedin.com/company/greentrack-coaching-consulting/',
+    'https://www.icf.com/',
+    'https://find-and-update.company-information.service.gov.uk/company/16247877',
+  ],
+  legalName: 'GreenTrack Coaching & Consulting Ltd',
+  identifier: { '@type': 'PropertyValue', name: 'Companies House', value: '16247877' },
 }
 
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': `${BASE_URL}/#nicola-nevill`,
   name: 'Nicola Nevill',
   alternateName: 'Nicola Salter',
   jobTitle: 'Executive Coach & Leadership Consultant',
   url: `${BASE_URL}/about`,
   email: 'nicola@greentrackcc.com',
-  sameAs: ['https://www.linkedin.com/in/nicolasalter/'],
-  worksFor: { '@type': 'Organization', name: 'GreenTrack Coaching & Consulting Ltd' },
-  alumniOf: { '@type': 'EducationalOrganization', name: 'Henley Business School' },
-  knowsAbout: ['Executive Coaching', 'Leadership Development', 'Team Facilitation', 'Organisational Change'],
+  sameAs: [
+    'https://www.linkedin.com/in/nicolasalter/',
+    'https://www.henley.ac.uk/',
+    'https://coachingfederation.org/',
+  ],
+  worksFor: { '@type': 'Organization', '@id': `${BASE_URL}/#organization`, name: 'GreenTrack Coaching & Consulting Ltd' },
+  alumniOf: { '@type': 'EducationalOrganization', name: 'Henley Business School', url: 'https://www.henley.ac.uk/' },
+  hasCredential: [
+    { '@type': 'EducationalOccupationalCredential', name: 'Professional Certificate in Executive Coaching', credentialCategory: 'Certificate', recognizedBy: { '@type': 'EducationalOrganization', name: 'Henley Business School' } },
+    { '@type': 'EducationalOccupationalCredential', name: 'Member, International Coaching Federation', credentialCategory: 'Membership', recognizedBy: { '@type': 'Organization', name: 'International Coaching Federation' } },
+    { '@type': 'EducationalOccupationalCredential', name: 'Chartered Fellow CIPD', credentialCategory: 'Fellowship', recognizedBy: { '@type': 'Organization', name: 'Chartered Institute of Personnel and Development' } },
+  ],
+  knowsAbout: ['Executive Coaching', 'Leadership Development', 'Team Facilitation', 'Organisational Change', 'Career Transitions'],
 }
 
 const localBusinessSchema = {
@@ -127,7 +147,7 @@ const serviceSchemas = [
     url: `${BASE_URL}/coaching`,
     description: 'One-to-one executive coaching for senior leaders, managers and emerging talent navigating complexity, transition and leadership development.',
     provider: { '@type': 'Person', name: 'Nicola Nevill', url: `${BASE_URL}/about` },
-    areaServed: { '@type': 'Country', name: 'United Kingdom' },
+    areaServed: 'Worldwide',
     serviceType: 'Executive Coaching',
   },
   {
@@ -137,7 +157,7 @@ const serviceSchemas = [
     url: `${BASE_URL}/coaching`,
     description: 'Bespoke team coaching, strategy away days, and cross-functional workshops to build alignment, communication, and momentum.',
     provider: { '@type': 'Person', name: 'Nicola Nevill', url: `${BASE_URL}/about` },
-    areaServed: { '@type': 'Country', name: 'United Kingdom' },
+    areaServed: 'Worldwide',
     serviceType: 'Team Facilitation',
   },
   {
@@ -150,7 +170,7 @@ const serviceSchemas = [
       { '@type': 'Person', name: 'Doug Nevill' },
       { '@type': 'Person', name: 'Nicola Nevill' },
     ],
-    areaServed: { '@type': 'Country', name: 'United Kingdom' },
+    areaServed: 'Worldwide',
     serviceType: 'Career Mentoring',
   },
 ]
@@ -204,7 +224,7 @@ const faqSchema = {
       name: 'Where does Nicola Nevill offer executive coaching?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Nicola is based in Oxfordshire and works with clients across the UK. Sessions are available in person and remotely.',
+        text: 'Nicola is based in Oxfordshire and works with clients globally. Sessions are available in person in Oxfordshire and remotely worldwide.',
       },
     },
     {
@@ -284,6 +304,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           data-tracking-id="tk_36d460eb374748689edb6793c283accc"
           strategy="afterInteractive"
         />
+
+        <Analytics />
       </body>
     </html>
   )
