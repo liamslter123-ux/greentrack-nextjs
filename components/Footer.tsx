@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { ArrowRight } from 'lucide-react'
 
 const primaryLinks = [
   { href: '/', label: 'Home' },
@@ -8,6 +9,7 @@ const primaryLinks = [
   { href: '/mentoring', label: 'Mentoring' },
   { href: '/testimonials', label: 'Testimonials' },
   { href: '/contact', label: 'Contact' },
+  { href: '/resources', label: 'Resources' },
 ]
 
 const legalLinks = [
@@ -36,12 +38,23 @@ export default function Footer() {
             <p className="text-cream/70 text-sm leading-relaxed italic font-display mb-5">
               &ldquo;Navigate the turns ahead and move forward with purpose.&rdquo;
             </p>
+            <p className="text-cream/50 text-xs leading-relaxed mb-5">
+              Nicola Nevill is a Henley Business School qualified executive coach, ICF member, and
+              Chartered Fellow CIPD. Based in Oxfordshire, UK, working with leaders and organisations worldwide.
+            </p>
             <a
               href="mailto:nicola@greentrackcc.com"
-              className="text-gold hover:text-cream transition-colors duration-200 text-sm"
+              className="text-gold hover:text-cream transition-colors duration-200 text-sm block mb-6"
             >
               nicola@greentrackcc.com
             </a>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[44px] bg-green text-white text-sm font-medium hover:bg-green/80 transition-colors duration-200 rounded-sm"
+            >
+              Get in Touch
+              <ArrowRight size={14} aria-hidden="true" />
+            </Link>
           </div>
 
           {/* Navigation */}

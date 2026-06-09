@@ -6,7 +6,7 @@ import { CheckCircle, ArrowRight } from 'lucide-react'
 export const metadata: Metadata = {
   title: { absolute: 'About Nicola Nevill | Qualified Executive Coach | GreenTrack' },
   description:
-    'Nicola Nevill is a qualified executive coach and leadership consultant helping leaders worldwide to lead with clarity, confidence and self-awareness. Based in Oxfordshire. Henley Business School. ICF Member. Chartered Fellow CIPD.',
+    'Nicola Nevill: Henley-qualified executive coach, ICF member, Chartered Fellow CIPD. Based in Oxfordshire, coaching leaders worldwide. 25+ years of experience.',
   alternates: { canonical: '/about' },
   openGraph: {
     title: 'About Nicola Nevill | Qualified Executive Coach | GreenTrack',
@@ -30,6 +30,73 @@ const breadcrumbSchema = {
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
     { '@type': 'ListItem', position: 2, name: 'About Nicola', item: `${BASE_URL}/about` },
+  ],
+}
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${BASE_URL}/#nicola-nevill`,
+  name: 'Nicola Nevill',
+  alternateName: 'Nicola Salter',
+  jobTitle: 'Executive Coach & Leadership Consultant',
+  url: `${BASE_URL}/about`,
+  email: 'nicola@greentrackcc.com',
+  image: `${BASE_URL}/nicola-portrait.jpg`,
+  description: 'Qualified executive coach and leadership consultant with over 25 years of experience supporting people and teams in high-performance environments. Based in Oxfordshire, working with leaders worldwide.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Oxfordshire',
+    addressRegion: 'Oxfordshire',
+    addressCountry: 'GB',
+  },
+  sameAs: [
+    'https://www.linkedin.com/in/nicolasalter/',
+    'https://coachingfederation.org/',
+  ],
+  worksFor: {
+    '@type': 'Organization',
+    name: 'GreenTrack Coaching & Consulting Ltd',
+    url: BASE_URL,
+  },
+  alumniOf: {
+    '@type': 'EducationalOrganization',
+    name: 'Henley Business School',
+    url: 'https://www.henley.ac.uk/',
+  },
+  hasCredential: [
+    {
+      '@type': 'EducationalOccupationalCredential',
+      name: 'Professional Certificate in Executive Coaching',
+      credentialCategory: 'Certificate',
+      recognizedBy: { '@type': 'EducationalOrganization', name: 'Henley Business School' },
+    },
+    {
+      '@type': 'EducationalOccupationalCredential',
+      name: 'MSc in Coaching for Behavioural Change (in progress)',
+      credentialCategory: 'Degree',
+      recognizedBy: { '@type': 'EducationalOrganization', name: 'Henley Business School' },
+    },
+    {
+      '@type': 'EducationalOccupationalCredential',
+      name: 'Member, International Coaching Federation',
+      credentialCategory: 'Membership',
+      recognizedBy: { '@type': 'Organization', name: 'International Coaching Federation' },
+    },
+    {
+      '@type': 'EducationalOccupationalCredential',
+      name: 'Chartered Fellow CIPD',
+      credentialCategory: 'Fellowship',
+      recognizedBy: { '@type': 'Organization', name: 'Chartered Institute of Personnel and Development' },
+    },
+  ],
+  knowsAbout: [
+    'Executive Coaching',
+    'Leadership Development',
+    'Team Facilitation',
+    'Organisational Change',
+    'Career Transitions',
+    'Systemic Coaching',
   ],
 }
 
@@ -65,6 +132,10 @@ export default function About() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
 
       {/* ── 1. HERO ───────────────────────────────────────────────────────── */}

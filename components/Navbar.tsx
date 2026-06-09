@@ -12,32 +12,44 @@ const navLinks = [
   { href: '/coaching', label: 'Coaching' },
   { href: '/mentoring', label: 'Mentoring' },
   { href: '/testimonials', label: 'Testimonials' },
+  { href: '/resources', label: 'Resources' },
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
   const pathname = usePathname()
-  const isHome = pathname === '/'
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const sentinel = document.getElementById('hero-sentinel')
+    if (!sentinel) {
+      setIsScrolled(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsScrolled(!entry.isIntersecting)
+      },
+      { threshold: 0, rootMargin: '0px' }
+    )
+
+    observer.observe(sentinel)
+    return () => observer.disconnect()
   }, [])
 
-  /* Close drawer on navigation */
+  /* Close drawer on route change */
   useEffect(() => {
     setDrawerOpen(false)
   }, [pathname])
 
-  /* Prevent body scroll when drawer is open */
+  /* Lock body scroll when mobile drawer is open */
   useEffect(() => {
     document.body.style.overflow = drawerOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [drawerOpen])
 
-  const transparent = isHome && !scrolled
+  const transparent = !isScrolled
 
   return (
     <>
@@ -45,7 +57,7 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           transparent
             ? 'bg-transparent'
-            : 'bg-cream/95 backdrop-blur-sm shadow-sm border-b border-green/10'
+            : 'bg-white shadow-sm'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -95,11 +107,11 @@ export default function Navbar() {
               })}
             </nav>
 
-            {/* Desktop CTA */}
+            {/* Desktop CTA — always green */}
             <div className="hidden md:flex items-center justify-end min-w-[280px]">
               <Link
                 href="/contact"
-                className="inline-flex items-center px-5 py-2.5 bg-green text-white text-sm font-medium hover:bg-darkGreen transition-colors duration-200 rounded-sm"
+                className="inline-flex items-center px-5 py-2.5 min-h-[44px] bg-green text-white text-sm font-medium hover:bg-darkGreen transition-colors duration-200 rounded-sm"
               >
                 Get in Touch
               </Link>
@@ -109,7 +121,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setDrawerOpen(true)}
-              className="md:hidden p-2 rounded-sm transition-colors duration-200"
+              className="md:hidden p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-sm transition-colors duration-200"
               aria-label="Open navigation menu"
               aria-expanded={drawerOpen}
               aria-controls="mobile-nav"
@@ -120,7 +132,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Drawer overlay */}
+      {/* Drawer backdrop */}
       {drawerOpen && (
         <div
           className="fixed inset-0 z-40 bg-charcoal/50 md:hidden"

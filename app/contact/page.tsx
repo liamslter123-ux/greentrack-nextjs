@@ -17,7 +17,7 @@ const breadcrumbSchema = {
 export const metadata: Metadata = {
   title: { absolute: 'Contact Nicola Nevill | GreenTrack' },
   description:
-    'Get in touch with Nicola Nevill to discuss executive coaching, team facilitation or motorsport mentoring. Based in Oxfordshire, working worldwide. Responds within 24 hours.',
+    'Contact Nicola Nevill to discuss executive coaching or motorsport mentoring. Based in Oxfordshire, working worldwide. Responds within 24 hours.',
   alternates: { canonical: '/contact' },
   openGraph: {
     title: 'Contact Nicola Nevill | GreenTrack',

@@ -7,7 +7,7 @@ import FaqAccordion from '@/components/FaqAccordion'
 export const metadata: Metadata = {
   title: { absolute: 'Motorsport & Engineering Mentoring | GreenTrack' },
   description:
-    'Career mentoring for Formula One, motorsport and engineering professionals. Doug Nevill (30 years F1 design) and Nicola Nevill offer practical, experience-led guidance.',
+    'Motorsport and engineering career mentoring with Doug Nevill (30 years F1 design) and Nicola Nevill. Honest, practical guidance for engineers and motorsport professionals worldwide.',
   alternates: { canonical: '/mentoring' },
   openGraph: {
     title: 'Motorsport & Engineering Mentoring | GreenTrack',
@@ -23,6 +23,106 @@ export const metadata: Metadata = {
   },
 }
 
+const BASE_URL = 'https://greentrackcc.com'
+
+const mentoringFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Who is the motorsport mentoring for?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The mentoring is for people entering motorsport or engineering, progressing early in their careers, leaving motorsport teams, or seeking clarity, confidence and direction. Doug and Nicola have both spent many years in high-performance engineering environments and understand the unique pressures and opportunities of this world.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Who are the mentors?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Doug Nevill spent close to 30 years working in Formula One design and now works in World Endurance Racing. Nicola Nevill worked in elite motorsport for over two decades, focusing on early-career development and career transitions. Together they offer both technical and career development mentoring.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How does mentoring work and what does it cost?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sessions are flexible and personalised to your goals. Pricing is available on enquiry and reflects the time and expertise involved in offering thoughtful, tailored support. Each session focuses on practical, honest conversations with clear actions and direction.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I get into Formula One or professional motorsport as an engineer?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Getting into Formula One requires a relevant engineering degree, relevant experience, strong networking, and persistence. Most engineers start with placements or roles in lower-formula teams before progressing. Doug Nevill, who spent close to 30 years in F1 design, offers honest guidance on how hiring actually works inside a professional motorsport team and what employers look for at every career stage.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is the mentoring only for engineers, or can others benefit?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'While Doug and Nicola have deep roots in the engineering and technical side of motorsport, the mentoring is open to anyone navigating a career in or around motorsport. This includes engineers, graduates, apprentices, and those in adjacent roles. Nicola also works with people navigating broader career transitions, including those leaving motorsport entirely and figuring out what comes next.',
+      },
+    },
+  ],
+}
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'Motorsport Mentoring', item: `${BASE_URL}/mentoring` },
+  ],
+}
+
+const mentoringServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Motorsport and Engineering Career Mentoring',
+  url: `${BASE_URL}/mentoring`,
+  description: 'Paid, personalised career mentoring for motorsport and engineering professionals. Delivered by Doug Nevill (close to 30 years Formula One design) and Nicola Nevill.',
+  provider: [
+    { '@type': 'Person', name: 'Doug Nevill', url: `${BASE_URL}/mentoring` },
+    { '@type': 'Person', name: 'Nicola Nevill', url: `${BASE_URL}/about` },
+  ],
+  areaServed: 'Worldwide',
+  serviceType: 'Career Mentoring',
+  offers: {
+    '@type': 'Offer',
+    description: 'Pricing available on enquiry. Initial conversation is complimentary.',
+    url: `${BASE_URL}/contact`,
+  },
+}
+
+const dougPersonSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Doug Nevill',
+  jobTitle: 'Technical and Engineering Career Mentor',
+  url: `${BASE_URL}/mentoring`,
+  image: `${BASE_URL}/doug-portrait.jpg`,
+  description: 'Doug Nevill spent close to 30 years working in Formula One car design, including leading a team of 30 engineers. He now works in World Endurance Racing and offers honest, experience-based career guidance to engineers and motorsport professionals.',
+  sameAs: ['https://www.linkedin.com/in/doug-nevill-bb0a382a/'],
+  worksFor: {
+    '@type': 'Organization',
+    name: 'GreenTrack Coaching & Consulting Ltd',
+    url: BASE_URL,
+  },
+  knowsAbout: [
+    'Formula One Car Design',
+    'Motorsport Engineering',
+    'World Endurance Racing',
+    'Engineering Career Development',
+    'Technical Leadership',
+  ],
+}
+
 const mentoringFaqs = [
   {
     question: 'Who is the motorsport mentoring for?',
@@ -35,15 +135,42 @@ const mentoringFaqs = [
       'Doug Nevill spent close to 30 years working in Formula One design and now works in World Endurance Racing. Nicola Nevill worked in elite motorsport for over two decades, focusing on early-career development and career transitions. Together they offer both technical and career development mentoring.',
   },
   {
-    question: 'How does mentoring work?',
+    question: 'How does mentoring work and what does it cost?',
     answer:
-      'Sessions are flexible and personalised to your goals. They are paid, reflecting the time and experience involved in offering thoughtful, tailored support. Each session focuses on practical, honest conversations with clear actions and direction.',
+      'Sessions are flexible and personalised to your goals. Pricing is available on enquiry and reflects the time and expertise involved in offering thoughtful, tailored support. Each session focuses on practical, honest conversations with clear actions and direction.',
+  },
+  {
+    question: 'How do I get into Formula One or professional motorsport as an engineer?',
+    answer:
+      'Getting into Formula One requires a relevant engineering degree, relevant experience, strong networking, and persistence. Most engineers start with placements or roles in lower-formula teams before progressing. Doug Nevill offers honest guidance on how hiring actually works inside a professional motorsport team and what employers look for at every career stage.',
+  },
+  {
+    question: 'Is the mentoring only for engineers, or can others benefit?',
+    answer:
+      'While Doug and Nicola have deep roots in the engineering and technical side of motorsport, the mentoring is open to anyone navigating a career in or around motorsport. This includes engineers, graduates, apprentices, and those in adjacent roles. Nicola also works with people navigating broader career transitions, including those leaving motorsport entirely.',
   },
 ]
 
 export default function Mentoring() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(mentoringFaqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(mentoringServiceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(dougPersonSchema) }}
+      />
+
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section className="bg-darkGreen pt-20" aria-label="Motorsport and engineering mentoring">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
@@ -55,7 +182,7 @@ export default function Mentoring() {
               Mentoring
             </p>
             <h1
-              className="font-display text-5xl sm:text-6xl text-white leading-tight mb-6 text-balance"
+              className="font-display text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mb-6 text-balance"
               style={{ animation: 'fadeInUp 0.7s ease 0.35s both' }}
             >
               Mentoring Grounded in Engineering and Motorsport Experience
@@ -64,7 +191,8 @@ export default function Mentoring() {
               className="text-cream/60 text-lg font-sans font-light leading-relaxed"
               style={{ animation: 'fadeInUp 0.6s ease 0.55s both' }}
             >
-              Career mentoring for Formula One, World Endurance Racing and engineering professionals
+              Honest conversations and practical direction from people who have genuinely lived this world.
+              Career mentoring for Formula One, World Endurance Racing and engineering professionals.
             </p>
           </div>
         </div>
@@ -86,8 +214,8 @@ export default function Mentoring() {
               people who&rsquo;ve genuinely lived this world.
             </p>
             <p>
-              Our sessions are paid, simply reflecting the time and experience involved in offering
-              thoughtful, tailored support. We focus on readiness, confidence, and practical next steps.
+              Sessions are tailored and flexible. Pricing is available on enquiry, reflecting the time
+              and experience involved in offering thoughtful, personalised support.
             </p>
           </div>
         </div>
@@ -183,7 +311,7 @@ export default function Mentoring() {
               src="https://open.spotify.com/embed/episode/2U0SfxMkY9dqF6swk2mUHn"
               width="100%"
               height="152"
-              frameBorder={0}
+              style={{ border: 'none' }}
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"
               title="GreenTrack podcast on Spotify"
@@ -233,29 +361,56 @@ export default function Mentoring() {
         </div>
       </section>
 
+      {/* ── TESTIMONIAL ───────────────────────────────────────────────────── */}
+      <section className="bg-cream py-16 sm:py-20" aria-label="Client feedback">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <blockquote className="border-l-2 border-gold pl-8">
+            <p className="font-display italic text-xl sm:text-2xl text-charcoal leading-relaxed mb-5">
+              &ldquo;Nicola has been a huge help in gaining clarity and perspective in the latter part
+              of my career. I am confident she can support anyone at any stage of their career.&rdquo;
+            </p>
+            <cite className="text-charcoal/50 text-sm not-italic font-sans">
+              Senior Technical Leader, Formula One Industry
+            </cite>
+          </blockquote>
+          <div className="mt-8">
+            <Link
+              href="/testimonials"
+              className="inline-flex items-center gap-2 text-green hover:text-darkGreen transition-colors duration-200 text-sm font-medium group"
+            >
+              Read all client testimonials
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA PANEL ─────────────────────────────────────────────────────── */}
-      <section className="bg-darkGreen py-20 sm:py-28" aria-label="Next steps">
+      <section className="bg-white py-20 sm:py-28" aria-label="Next steps">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gold text-xs font-medium uppercase tracking-widest mb-5">Get started</p>
-          <h2 className="font-display text-4xl sm:text-5xl text-white mb-6 text-balance">
+          <p className="text-green text-xs font-medium uppercase tracking-widest mb-5">Get started</p>
+          <h2 className="font-display text-4xl sm:text-5xl text-charcoal mb-4 text-balance">
             Let&rsquo;s Start the Conversation
           </h2>
+          <p className="text-charcoal/55 text-base font-sans font-light mb-10">
+            Initial conversations are complimentary.
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center flex-wrap">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 min-h-[48px] bg-green text-white text-sm font-medium hover:bg-green/80 transition-colors duration-200 rounded-sm"
+              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 min-h-[48px] bg-green text-white text-sm font-medium hover:bg-darkGreen transition-colors duration-200 rounded-sm"
             >
-              Let&rsquo;s Start the Conversation <ArrowRight size={15} aria-hidden="true" />
+              Get in Touch <ArrowRight size={15} aria-hidden="true" />
             </Link>
             <Link
               href="/coaching"
-              className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 min-h-[48px] border border-white/30 text-white text-sm font-medium hover:bg-white/10 transition-colors duration-200 rounded-sm"
+              className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 min-h-[48px] border border-green text-green text-sm font-medium hover:bg-green hover:text-white transition-colors duration-200 rounded-sm"
             >
               Learn more about coaching &amp; facilitation
             </Link>
             <Link
               href="/about"
-              className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 min-h-[48px] border border-white/30 text-white text-sm font-medium hover:bg-white/10 transition-colors duration-200 rounded-sm"
+              className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 min-h-[48px] border border-green text-green text-sm font-medium hover:bg-green hover:text-white transition-colors duration-200 rounded-sm"
             >
               Learn more about Nicola
             </Link>

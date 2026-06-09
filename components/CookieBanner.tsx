@@ -45,14 +45,14 @@ export default function CookieBanner() {
           <button
             type="button"
             onClick={reject}
-            className="px-4 py-2 text-sm text-cream/70 border border-cream/20 hover:border-cream/40 hover:text-cream transition-colors duration-200 rounded-sm"
+            className="px-4 py-2 min-h-[44px] text-sm text-cream/70 border border-cream/20 hover:border-cream/40 hover:text-cream transition-colors duration-200 rounded-sm"
           >
             Reject All
           </button>
           <button
             type="button"
             onClick={accept}
-            className="px-4 py-2 text-sm bg-green text-white hover:bg-darkGreen transition-colors duration-200 rounded-sm"
+            className="px-4 py-2 min-h-[44px] text-sm bg-green text-white hover:bg-darkGreen transition-colors duration-200 rounded-sm"
           >
             Accept All
           </button>

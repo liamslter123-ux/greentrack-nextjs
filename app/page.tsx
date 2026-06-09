@@ -6,22 +6,22 @@ import ServiceCard from '@/components/ServiceCard'
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'Executive Coaching & Leadership Development Oxfordshire | GreenTrack',
+    absolute: 'Executive Coaching Oxfordshire | GreenTrack',
   },
   description:
-    'Nicola Nevill offers executive coaching, leadership development and team facilitation worldwide. Based in Oxfordshire. Henley Business School qualified coach. 25+ years in high-performance environments.',
+    'Executive coaching and leadership development with Nicola Nevill, Henley-qualified coach. Oxfordshire-based, working with leaders worldwide.',
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'Executive Coaching & Leadership Development Oxfordshire | GreenTrack',
+    title: 'Executive Coaching Oxfordshire | GreenTrack',
     description:
-      'Nicola Nevill offers executive coaching, leadership development and team facilitation worldwide. Based in Oxfordshire. 25+ years in high-performance environments.',
+      'Executive coaching and leadership development with Nicola Nevill. Oxfordshire-based, working with leaders worldwide.',
     url: '/',
     images: [{ url: 'https://greentrackcc.com/racetrack-hero.jpeg' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Executive Coaching & Leadership Development Oxfordshire | GreenTrack',
-    description: 'Nicola Nevill, executive coaching and leadership development. Based in Oxfordshire, working worldwide.',
+    title: 'Executive Coaching Oxfordshire | GreenTrack',
+    description: 'Executive coaching and leadership development with Nicola Nevill. Oxfordshire-based, working worldwide.',
     images: ['https://greentrackcc.com/racetrack-hero.jpeg'],
   },
 }

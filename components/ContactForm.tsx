@@ -25,7 +25,7 @@ const subjects = [
 ]
 
 const inputBase =
-  'w-full border rounded-sm px-4 py-3 text-sm text-charcoal bg-white placeholder-charcoal/35 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green/30'
+  'w-full border rounded-sm px-4 py-3 text-base text-charcoal bg-white placeholder-charcoal/35 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green/30'
 const inputNormal = `${inputBase} border-charcoal/20 focus:border-green`
 const inputError = `${inputBase} border-red-400 focus:border-red-400 focus:ring-red-200`
 
@@ -224,7 +224,7 @@ export default function ContactForm() {
             })}
             id="message"
             rows={5}
-            placeholder="Tell Nicola a little about what you&apos;re looking for…"
+            placeholder="Tell Nicola a little about what you're looking for…"
             className={`${errors.message ? inputError : inputNormal} resize-y min-h-[120px]`}
             aria-required="true"
             aria-invalid={errors.message ? 'true' : 'false'}
