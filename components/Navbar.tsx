@@ -72,7 +72,7 @@ export default function Navbar() {
               <Image
                 src="/Greentrack_close_upv2.png"
                 alt="GreenTrack Coaching & Consulting"
-                width={256}
+                width={122}
                 height={64}
                 className="h-16 w-auto object-contain"
                 priority
@@ -155,9 +155,9 @@ export default function Navbar() {
           <Image
             src="/Greentrack_close_upv2.png"
             alt="GreenTrack Coaching & Consulting"
-            width={160}
+            width={77}
             height={40}
-            className="h-10 w-auto"
+            className="h-10 w-auto object-contain"
           />
           <button
             type="button"

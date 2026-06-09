@@ -30,7 +30,7 @@ export default function Footer() {
               <Image
                 src="/Greentrack_close_upv2.png"
                 alt="GreenTrack Coaching & Consulting"
-                width={160}
+                width={77}
                 height={40}
                 className="h-10 w-auto object-contain mb-5"
               />
@@ -38,7 +38,7 @@ export default function Footer() {
             <p className="text-cream/70 text-sm leading-relaxed italic font-display mb-5">
               &ldquo;Navigate the turns ahead and move forward with purpose.&rdquo;
             </p>
-            <p className="text-cream/50 text-xs leading-relaxed mb-5">
+            <p className="text-cream/70 text-xs leading-relaxed mb-5">
               Nicola Nevill is a Henley Business School qualified executive coach, ICF member, and
               Chartered Fellow CIPD. Based in Oxfordshire, UK, working with leaders and organisations worldwide.
             </p>
@@ -59,7 +59,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h2 className="text-cream/50 text-xs font-medium uppercase tracking-widest mb-5">
+            <h2 className="text-cream/70 text-xs font-medium uppercase tracking-widest mb-5">
               Navigation
             </h2>
             <ul className="space-y-3" role="list">
@@ -78,7 +78,7 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h2 className="text-cream/50 text-xs font-medium uppercase tracking-widest mb-5">
+            <h2 className="text-cream/70 text-xs font-medium uppercase tracking-widest mb-5">
               Legal
             </h2>
             <ul className="space-y-3" role="list">
@@ -97,22 +97,22 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-cream/10 pt-8 space-y-2 text-center">
-          <p className="text-cream/40 text-xs">
+          <p className="text-cream/60 text-xs">
             GreenTrack Coaching &amp; Consulting Ltd | Company No: 16247877 | Registered in England &amp; Wales
           </p>
-          <p className="text-cream/40 text-xs">
+          <p className="text-cream/60 text-xs">
             Registered Office: 2 The Old Estate Yard, High Street, East Hendred, Wantage, Oxfordshire, OX12 8JY
           </p>
-          <p className="text-cream/30 text-xs pt-1">
+          <p className="text-cream/50 text-xs pt-1">
             &copy; 2026 GreenTrack Coaching &amp; Consulting Ltd. All rights reserved.
           </p>
-          <p className="text-cream/25 text-xs pt-1">
+          <p className="text-cream/45 text-xs pt-1">
             Website by{' '}
             <a
               href="https://saltersocials.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-cream/50 transition-colors duration-200"
+              className="hover:text-cream/70 transition-colors duration-200"
             >
               Salter Socials
             </a>

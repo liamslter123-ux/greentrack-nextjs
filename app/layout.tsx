@@ -250,6 +250,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en-GB" className={`${playfair.variable} ${dmSans.variable}`}>
       <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://backend.leadconnectorhq.com" />
+        <link rel="preconnect" href="https://go.greentrackcc.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://backend.leadconnectorhq.com" />
+        <link rel="dns-prefetch" href="https://go.greentrackcc.com" />
         <link rel="preload" as="image" href="/racetrack-hero.webp" fetchPriority="high" />
         <link rel="manifest" href="/site.webmanifest" />
         <script
@@ -310,7 +316,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Script
           src="https://go.greentrackcc.com/js/external-tracking.js"
           data-tracking-id="tk_36d460eb374748689edb6793c283accc"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
 
         <Analytics />

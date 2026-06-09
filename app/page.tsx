@@ -180,7 +180,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <p className="text-charcoal/45 text-sm font-sans mt-8 leading-relaxed">
+          <p className="text-charcoal/60 text-sm font-sans mt-8 leading-relaxed">
             If any of these resonate, a conversation with Nicola is a good first step. Initial conversations are complimentary.
           </p>
         </div>
@@ -257,7 +257,7 @@ export default function Home() {
               but the way people work, decide, and lead.
             </p>
             <footer>
-              <cite className="text-white/60 text-sm not-italic font-sans tracking-wide">
+              <cite className="text-white/75 text-sm not-italic font-sans tracking-wide">
                 Founder and Senior Executive
               </cite>
             </footer>
@@ -285,7 +285,7 @@ export default function Home() {
             If you are at a crossroads as a leader, navigating a significant shift, or simply ready to
             lead with greater clarity and confidence, a conversation is the right first step.
           </p>
-          <p className="text-charcoal/40 text-sm font-sans mb-12">
+          <p className="text-charcoal/60 text-sm font-sans mb-12">
             Initial conversations are complimentary. No obligation, no commitment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
