@@ -56,12 +56,12 @@ export default function Home() {
     <>
       {/* ── 1. HERO ───────────────────────────────────────────────────────── */}
       <section
-        className="relative flex items-center justify-center min-h-screen [contain:paint]"
+        className="relative flex items-center justify-center min-h-screen"
         aria-label="Hero"
         style={{ touchAction: 'pan-y' }}
       >
         {/* WebP hero with JPEG fallback */}
-        <picture className="absolute inset-0">
+        <picture className="absolute inset-0" style={{ transform: 'translateZ(0)' }}>
           <source srcSet="/racetrack-hero.webp" type="image/webp" />
           <img
             src="/racetrack-hero.jpeg"

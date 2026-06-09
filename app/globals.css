@@ -47,20 +47,19 @@ html,
 body {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  touch-action: pan-y;
 }
 
 body {
   overflow-x: clip;
-  overscroll-behavior: none;
+  overscroll-behavior-x: none;
 }
 
-/* ── 100dvh fix for mobile Safari ─────────────────────────────────────── */
-/* Tailwind's min-h-screen generates 100vh; 100dvh accounts for the        */
-/* collapsing address bar on iOS/Android Chrome                             */
+/* ── Stable hero height for mobile Safari ─────────────────────────────── */
+/* 100svh = small viewport height (with URL bar visible) — stable and does */
+/* not recalculate as the bar animates, preventing the zoom-on-scroll bug  */
 .min-h-screen {
-  min-height: 100vh; /* fallback for older browsers */
-  min-height: 100dvh;
+  min-height: 100vh;   /* fallback for older browsers */
+  min-height: 100svh;  /* stable: does not resize when URL bar hides       */
 }
 
 /* ── Prevent image drag interference on touch devices ────────────────── */
