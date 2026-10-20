@@ -2,70 +2,13 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import TestimonialCard from '@/components/TestimonialCard'
+import { breadcrumbs, jsonLd } from '@/lib/site'
 
-const BASE_URL = 'https://greentrackcc.com'
-
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
-    { '@type': 'ListItem', position: 2, name: 'Client Testimonials', item: `${BASE_URL}/testimonials` },
-  ],
-}
-
-const aggregateRatingSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': `${BASE_URL}/#organization`,
-  name: 'GreenTrack Coaching & Consulting Ltd',
-  url: BASE_URL,
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '5',
-    reviewCount: '6',
-    bestRating: '5',
-    worstRating: '1',
-  },
-  review: [
-    {
-      '@type': 'Review',
-      reviewBody: 'Nicola brings together leadership experience, coaching, and a deep understanding of organisational dynamics. She helps teams and leaders find clarity, build alignment, and turn ambition into meaningful outcomes. Her approach influences not just results, but the way people work, decide, and lead.',
-      author: { '@type': 'Person', name: 'Founder and Senior Executive' },
-      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-    },
-    {
-      '@type': 'Review',
-      reviewBody: 'Nicola has been a huge help in gaining clarity and perspective in the latter part of my career. I am confident she can support anyone at any stage of their career.',
-      author: { '@type': 'Person', name: 'Senior Technical Leader, Formula One Industry' },
-      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-    },
-    {
-      '@type': 'Review',
-      reviewBody: 'Nicola has been instrumental in helping me shape the next phase of my career and build a strong foundation for future success as a preferred Chair and NED.',
-      author: { '@type': 'Person', name: 'Serial UK Biotech CXO and Entrepreneur' },
-      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-    },
-    {
-      '@type': 'Review',
-      reviewBody: 'I just wanted to say a huge thanks for the coaching, I feel energized and motivated following our meetings.',
-      author: { '@type': 'Person', name: 'Executive experienced in regulated environments' },
-      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-    },
-    {
-      '@type': 'Review',
-      reviewBody: 'The coaching sessions are incredibly helpful and really help me see clearer my sense of purpose, my options and reminding myself I am still good at what I do. I feel a world apart from where I was before.',
-      author: { '@type': 'Person', name: 'Senior Manager, Legal Services' },
-      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-    },
-    {
-      '@type': 'Review',
-      reviewBody: "Nicky's coaching gave me the clarity and confidence to rethink my future. I ended up changing my career direction completely and I'm loving where it's taken me.",
-      author: { '@type': 'Person', name: 'Entrepreneur and small business owner' },
-      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-    },
-  ],
-}
+/* Testimonials are shown as on-page content only. Review/AggregateRating markup is deliberately
+   omitted: Google treats a business's own testimonials as self-serving and ineligible, and
+   anonymised authors risk a structured-data manual action. Real reviews belong on the
+   Google Business Profile. */
+const breadcrumbSchema = breadcrumbs([{ name: 'Client Testimonials', path: '/testimonials' }])
 
 export const metadata: Metadata = {
   title: { absolute: 'Client Testimonials | Executive Coaching | GreenTrack' },
@@ -122,14 +65,7 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbSchema)} />
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section className="bg-darkGreen pt-20" aria-label="Client testimonials">

@@ -248,6 +248,17 @@ export default function Resources() {
               </div>
             ))}
           </div>
+          <p className="text-charcoal/60 text-base font-sans mt-8 leading-relaxed">
+            Read our full guides on{' '}
+            <Link href="/insights/how-to-get-into-formula-1-engineering" className="text-green underline underline-offset-2 hover:text-darkGreen">
+              getting into Formula 1 as an engineer
+            </Link>{' '}
+            and{' '}
+            <Link href="/insights/leaving-motorsport-career-transition" className="text-green underline underline-offset-2 hover:text-darkGreen">
+              leaving motorsport
+            </Link>
+            .
+          </p>
           <div className="mt-8">
             <Link
               href="/mentoring"

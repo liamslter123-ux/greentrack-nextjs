@@ -2,9 +2,10 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { CheckCircle, ArrowRight } from 'lucide-react'
+import { BASE_URL, NICOLA_ID, WEBSITE_ID, breadcrumbs, jsonLd } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: { absolute: 'About Nicola Nevill | Qualified Executive Coach | GreenTrack' },
+  title: { absolute: 'Nicola Nevill | Executive Coach, Oxfordshire | GreenTrack' },
   description:
     'Nicola Nevill: Henley-qualified executive coach, ICF member, Chartered Fellow CIPD. Based in Oxfordshire, coaching leaders worldwide. 25+ years of experience.',
   alternates: { canonical: '/about' },
@@ -22,82 +23,18 @@ export const metadata: Metadata = {
   },
 }
 
-const BASE_URL = 'https://greentrackcc.com'
+const breadcrumbSchema = breadcrumbs([{ name: 'About Nicola', path: '/about' }])
 
-const breadcrumbSchema = {
+/* ProfilePage pointing at the single Nicola entity defined in the root layout graph */
+const profileSchema = {
   '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
-    { '@type': 'ListItem', position: 2, name: 'About Nicola', item: `${BASE_URL}/about` },
-  ],
-}
-
-const personSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  '@id': `${BASE_URL}/#nicola-nevill`,
-  name: 'Nicola Nevill',
-  alternateName: 'Nicola Salter',
-  jobTitle: 'Executive Coach & Leadership Consultant',
+  '@type': 'ProfilePage',
+  '@id': `${BASE_URL}/about#webpage`,
   url: `${BASE_URL}/about`,
-  email: 'nicola@greentrackcc.com',
-  image: `${BASE_URL}/nicola-portrait.jpg`,
-  description: 'Qualified executive coach and leadership consultant with over 25 years of experience supporting people and teams in high-performance environments. Based in Oxfordshire, working with leaders worldwide.',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Oxfordshire',
-    addressRegion: 'Oxfordshire',
-    addressCountry: 'GB',
-  },
-  sameAs: [
-    'https://www.linkedin.com/in/nicolasalter/',
-    'https://coachingfederation.org/',
-  ],
-  worksFor: {
-    '@type': 'Organization',
-    name: 'GreenTrack Coaching & Consulting Ltd',
-    url: BASE_URL,
-  },
-  alumniOf: {
-    '@type': 'EducationalOrganization',
-    name: 'Henley Business School',
-    url: 'https://www.henley.ac.uk/',
-  },
-  hasCredential: [
-    {
-      '@type': 'EducationalOccupationalCredential',
-      name: 'Professional Certificate in Executive Coaching',
-      credentialCategory: 'Certificate',
-      recognizedBy: { '@type': 'EducationalOrganization', name: 'Henley Business School' },
-    },
-    {
-      '@type': 'EducationalOccupationalCredential',
-      name: 'MSc in Coaching for Behavioural Change (in progress)',
-      credentialCategory: 'Degree',
-      recognizedBy: { '@type': 'EducationalOrganization', name: 'Henley Business School' },
-    },
-    {
-      '@type': 'EducationalOccupationalCredential',
-      name: 'Member, International Coaching Federation',
-      credentialCategory: 'Membership',
-      recognizedBy: { '@type': 'Organization', name: 'International Coaching Federation' },
-    },
-    {
-      '@type': 'EducationalOccupationalCredential',
-      name: 'Chartered Fellow CIPD',
-      credentialCategory: 'Fellowship',
-      recognizedBy: { '@type': 'Organization', name: 'Chartered Institute of Personnel and Development' },
-    },
-  ],
-  knowsAbout: [
-    'Executive Coaching',
-    'Leadership Development',
-    'Team Facilitation',
-    'Organisational Change',
-    'Career Transitions',
-    'Systemic Coaching',
-  ],
+  name: 'About Nicola Nevill',
+  isPartOf: { '@id': WEBSITE_ID },
+  mainEntity: { '@id': NICOLA_ID },
+  primaryImageOfPage: `${BASE_URL}/nicola-portrait.jpg`,
 }
 
 const qualifications = [
@@ -129,14 +66,8 @@ const philosophy = [
 export default function About() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbSchema)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(profileSchema)} />
 
       {/* ── 1. HERO ───────────────────────────────────────────────────────── */}
       <section className="bg-darkGreen pt-20 [contain:paint]" aria-label="About Nicola Nevill">

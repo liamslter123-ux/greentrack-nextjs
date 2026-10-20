@@ -2,98 +2,44 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import FaqAccordion from '@/components/FaqAccordion'
+import { BASE_URL, NICOLA_ID, ORG_ID, breadcrumbs, faqSchema, jsonLd } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Executive Coaching & Team Facilitation | GreenTrack' },
+  title: { absolute: 'Executive & Leadership Coaching, Team Facilitation | GreenTrack' },
   description:
-    'Executive coaching and team facilitation with Nicola Nevill. Gain clarity, confidence and direction. Henley-qualified. Based in Oxfordshire, working worldwide.',
+    'Online executive coaching and team facilitation with Nicola Nevill, Henley-qualified coach based in Oxfordshire. Coaching leaders worldwide. Complimentary first conversation.',
   alternates: { canonical: '/coaching' },
   openGraph: {
-    title: 'Executive Coaching & Team Facilitation | GreenTrack',
+    title: 'Executive & Leadership Coaching, Team Facilitation | GreenTrack',
     description: 'Gain clarity, confidence and direction with Nicola Nevill, Henley Business School qualified coach. Based in Oxfordshire, working with clients worldwide.',
     url: '/coaching',
     images: [{ url: 'https://greentrackcc.com/racetrack-hero.jpeg' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Executive Coaching & Team Facilitation | GreenTrack',
+    title: 'Executive & Leadership Coaching, Team Facilitation | GreenTrack',
     description: 'Supporting senior leaders and teams worldwide with clarity, confidence, and direction. Based in Oxfordshire.',
     images: ['https://greentrackcc.com/racetrack-hero.jpeg'],
   },
 }
 
-const BASE_URL = 'https://greentrackcc.com'
-
-const coachingFaqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'What is executive coaching?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Executive coaching is a professional development process where a qualified coach works one-to-one with a leader to help them build clarity and move forward with greater confidence and purpose. It is not advice-giving or consulting: it is a thought-provoking partnership.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Who is executive coaching for?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Executive coaching is for senior leaders, managers and emerging talent who want to lead with greater clarity, confidence and self-awareness. Nicola works with people across sectors and career stages, from those at the top of their organisations to those stepping into new levels of responsibility.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Where does Nicola Nevill offer coaching?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Nicola is based in Oxfordshire and works with clients globally. Sessions are available in person and remotely, anywhere in the world.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Is coaching confidential?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes. Coaching conversations are fully confidential. Information shared during sessions will not be disclosed to third parties without your consent, except where required by law.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How many coaching sessions will I need?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Most clients work with Nicola for six to twelve sessions over three to nine months, though this varies depending on your goals and situation. Every programme is shaped around what matters most to you. There is no fixed number required — the initial conversation is always complimentary and carries no commitment.',
-      },
-    },
-  ],
-}
-
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
-    { '@type': 'ListItem', position: 2, name: 'Executive Coaching', item: `${BASE_URL}/coaching` },
-  ],
-}
-
 const coachingServiceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'Executive Coaching & Team Facilitation',
+  '@id': `${BASE_URL}/coaching#service`,
+  name: 'Executive Coaching and Team Facilitation',
   url: `${BASE_URL}/coaching`,
-  description: 'One-to-one executive coaching and bespoke team facilitation for senior leaders, managers and emerging talent. Helping individuals and teams gain clarity, confidence and direction.',
-  provider: {
-    '@type': 'Person',
-    name: 'Nicola Nevill',
-    url: `${BASE_URL}/about`,
-    email: 'nicola@greentrackcc.com',
-  },
+  description:
+    'One-to-one executive coaching and bespoke team facilitation for senior leaders, managers and emerging talent. Delivered online worldwide by video call, with in-person sessions available in Oxfordshire.',
+  provider: { '@id': NICOLA_ID },
+  brand: { '@id': ORG_ID },
+  serviceType: 'Executive coaching',
   areaServed: 'Worldwide',
-  serviceType: 'Executive Coaching',
+  availableChannel: {
+    '@type': 'ServiceChannel',
+    serviceUrl: `${BASE_URL}/contact`,
+    availableLanguage: 'en-GB',
+  },
   offers: {
     '@type': 'Offer',
     description: 'Initial conversation is complimentary. Pricing discussed on enquiry.',
@@ -115,7 +61,7 @@ const coachingFaqs = [
   {
     question: 'Where does Nicola Nevill offer coaching?',
     answer:
-      'Nicola is based in Oxfordshire and works with clients worldwide. Sessions are available in person and remotely, anywhere in the world.',
+      'Nicola is based in Oxfordshire and coaches mainly online by video call, so she works with clients anywhere in the world. In-person sessions are also available in Oxfordshire.',
   },
   {
     question: 'Is coaching confidential?',
@@ -127,23 +73,32 @@ const coachingFaqs = [
     answer:
       'Most clients work with Nicola for six to twelve sessions over three to nine months, though this varies depending on your goals and situation. Every programme is shaped around what matters most to you. The initial conversation is always complimentary and carries no commitment.',
   },
+  {
+    question: 'How much does executive coaching cost?',
+    answer:
+      'Fees depend on the length of the programme, whether it is individual or team coaching, and whether it is funded by you or your organisation. Nicola agrees pricing during the complimentary initial conversation, once she understands what you need, so you only pay for support that fits.',
+  },
+  {
+    question: 'Can my employer pay for coaching?',
+    answer:
+      'Yes. Many organisations fund coaching for their leaders as part of development, promotion or change programmes. Nicola can agree objectives with you and your sponsor at the start, while keeping the content of your sessions confidential.',
+  },
+  {
+    question: 'What is the difference between coaching and mentoring?',
+    answer:
+      'Coaching helps you find your own answers through structured, thought-provoking conversation. Mentoring shares the experience of someone who has walked a similar path. GreenTrack offers both: executive coaching with Nicola, and motorsport and engineering mentoring with Doug and Nicola.',
+  },
 ]
+
+const coachingFaqSchema = faqSchema(coachingFaqs)
+const breadcrumbSchema = breadcrumbs([{ name: 'Executive Coaching', path: '/coaching' }])
 
 export default function Coaching() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(coachingFaqSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(coachingServiceSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(coachingFaqSchema)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbSchema)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(coachingServiceSchema)} />
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section className="bg-darkGreen pt-20" aria-label="Coaching and facilitation">
@@ -301,8 +256,8 @@ export default function Coaching() {
               },
               {
                 n: '03',
-                title: 'In person or remote, anywhere in the world',
-                body: 'Nicola is based in Oxfordshire and works with clients in person and remotely. Remote sessions mean coaching can fit any schedule, anywhere in the world.',
+                title: 'Online, anywhere in the world',
+                body: 'Most sessions take place online by video call, so coaching fits around your schedule and time zone wherever you are. Nicola is based in Oxfordshire, and in-person sessions are available locally if you prefer.',
               },
             ].map((step) => (
               <div key={step.n} className="flex items-start gap-6 p-6 bg-white rounded-sm border border-charcoal/8">
@@ -320,7 +275,11 @@ export default function Coaching() {
             ))}
           </div>
           <p className="text-charcoal/40 text-sm mt-8 font-sans">
-            Pricing is available on enquiry and is discussed during the initial call.
+            Pricing is available on enquiry and is discussed during the initial call.{' '}
+            <Link href="/what-to-expect" className="text-green underline underline-offset-2 hover:text-darkGreen">
+              Read what to expect from coaching
+            </Link>
+            .
           </p>
         </div>
       </section>

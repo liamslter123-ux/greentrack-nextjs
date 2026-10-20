@@ -4,25 +4,27 @@ import Link from 'next/link'
 import { Target, Users, Gauge, ArrowRight } from 'lucide-react'
 import ScrollToServicesButton from '@/components/ScrollToServicesButton'
 import ServiceCard from '@/components/ServiceCard'
+import FaqAccordion from '@/components/FaqAccordion'
+import { BASE_URL, NICOLA_ID, OXFORDSHIRE_AREAS, ORG_ID, WEBSITE_ID, faqSchema, jsonLd } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'Executive Coaching Oxfordshire | GreenTrack',
+    absolute: 'Online Executive Coach | Oxfordshire, UK | GreenTrack',
   },
   description:
-    'Executive coaching and leadership development with Nicola Nevill, Henley-qualified coach. Oxfordshire-based, working with leaders worldwide.',
+    'Online executive coaching and leadership development with Nicola Nevill, Henley-qualified coach based in Oxfordshire. Coaching leaders anywhere in the world by video call.',
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'Executive Coaching Oxfordshire | GreenTrack',
+    title: 'Online Executive Coach | Oxfordshire, UK | GreenTrack',
     description:
-      'Executive coaching and leadership development with Nicola Nevill. Oxfordshire-based, working with leaders worldwide.',
+      'Online executive coaching and mentoring with Nicola Nevill. Based in Oxfordshire, coaching leaders anywhere in the world.',
     url: '/',
     images: [{ url: 'https://greentrackcc.com/racetrack-hero.jpeg' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Executive Coaching Oxfordshire | GreenTrack',
-    description: 'Executive coaching and leadership development with Nicola Nevill. Oxfordshire-based, working worldwide.',
+    title: 'Online Executive Coach | Oxfordshire, UK | GreenTrack',
+    description: 'Online executive coaching and mentoring with Nicola Nevill. Based in Oxfordshire, coaching leaders anywhere in the world.',
     images: ['https://greentrackcc.com/racetrack-hero.jpeg'],
   },
 }
@@ -50,11 +52,50 @@ const services = [
   },
 ]
 
-const credentials = ['Henley MSc', 'ICF Member', 'Chartered CIPD']
+/* Answer-first FAQs: written to be quoted directly by Google and AI assistants */
+const homeFaqs = [
+  {
+    question: 'Who is Nicola Nevill?',
+    answer:
+      'Nicola Nevill is an executive coach and leadership consultant based near Wantage in Oxfordshire. She is a Henley Business School qualified coach, a member of the International Coaching Federation and a Chartered Fellow of the CIPD, with over 25 years supporting people and teams in high-performance environments, including two decades in elite motorsport.',
+  },
+  {
+    question: 'Do you offer online executive coaching?',
+    answer:
+      'Yes. Most of Nicola’s coaching takes place online by video call, so she works with leaders anywhere in the UK and around the world. She is based in Oxfordshire, and in-person sessions are also available locally, including Oxford, Abingdon, Wantage, Didcot and Henley-on-Thames.',
+  },
+  {
+    question: 'Is the first coaching conversation free?',
+    answer:
+      'Yes. Every engagement starts with a complimentary, no-obligation conversation to understand your situation and decide together whether coaching is the right fit. Nicola replies to enquiries within 24 hours.',
+  },
+  {
+    question: 'What services does GreenTrack offer?',
+    answer:
+      'GreenTrack Coaching & Consulting offers one-to-one executive and leadership coaching, team coaching and facilitation including strategy away days, and career mentoring for motorsport and engineering professionals with former Formula One designer Doug Nevill.',
+  },
+]
+
+const homePageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': `${BASE_URL}/#webpage`,
+  url: BASE_URL,
+  name: 'Online Executive Coach | Oxfordshire, UK | GreenTrack',
+  isPartOf: { '@id': WEBSITE_ID },
+  about: { '@id': ORG_ID },
+  mentions: { '@id': NICOLA_ID },
+  inLanguage: 'en-GB',
+}
+
+const credentials = ['Henley Qualified Coach', 'ICF Member', 'Chartered Fellow CIPD']
 
 export default function Home() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(homePageSchema)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema(homeFaqs))} />
+
       {/* ── 1. HERO ───────────────────────────────────────────────────────── */}
       <section
         className="relative flex items-center justify-center min-h-screen"
@@ -79,19 +120,20 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" aria-hidden="true" />
 
         <div className="relative z-10 text-center px-6 sm:px-8 max-w-5xl mx-auto pt-20">
-          <p
+          {/* H1 carries the search intent; "Find Your Line" stays as the visual headline */}
+          <h1
             className="text-gold text-xs font-medium uppercase tracking-widest mb-7"
             style={{ animation: 'fadeInUp 0.6s ease 0.3s both', pointerEvents: 'none' }}
           >
-            Executive Coaching · Leadership Development · Mentoring
-          </p>
+            Online Executive Coaching &amp; Mentoring · Oxfordshire, UK
+          </h1>
 
-          <h1
+          <p
             className="font-display italic text-6xl sm:text-7xl lg:text-8xl text-white leading-none tracking-tight mb-7 text-balance"
             style={{ animation: 'fadeInUp 0.75s ease 0.5s both', pointerEvents: 'none' }}
           >
             Find Your Line
-          </h1>
+          </p>
 
           <p
             className="text-white/85 text-xl sm:text-2xl font-sans font-light mb-4 max-w-2xl mx-auto leading-relaxed"
@@ -104,7 +146,7 @@ export default function Home() {
             className="text-white/55 text-sm font-sans mb-12 tracking-wide"
             style={{ animation: 'fadeInUp 0.6s ease 0.9s both', pointerEvents: 'none' }}
           >
-            Based in Oxfordshire · Working with anyone, anywhere
+            Online coaching worldwide · Based in Oxfordshire
           </p>
 
           <div
@@ -208,8 +250,12 @@ export default function Home() {
               </h2>
               <p className="text-charcoal/70 text-lg leading-relaxed mb-8 font-sans font-light">
                 With over 25 years&rsquo; experience supporting people and teams in
-                high-performance environments, I provide coaching and leadership support to
-                individuals and teams.
+                high-performance environments, including two decades in elite motorsport, I provide
+                coaching and leadership support to individuals and teams.
+              </p>
+              <p className="text-charcoal/70 text-lg leading-relaxed mb-8 font-sans font-light">
+                I am a qualified executive coach through Henley Business School, a member of the
+                International Coaching Federation and a Chartered Fellow of the CIPD.
               </p>
               <div className="flex flex-wrap gap-2 mb-10" role="list" aria-label="Credentials">
                 {credentials.map((badge) => (
@@ -234,7 +280,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 5. PULL QUOTE ────────────────────────────────────────────────── */}
+      {/* ── 5. WHERE NICOLA WORKS ───────────────────────────────────────── */}
+      <section className="bg-white py-20 sm:py-28" aria-label="Online executive coaching worldwide">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-green text-xs font-medium uppercase tracking-widest mb-5">Where I work</p>
+          <h2 className="font-display text-3xl sm:text-4xl text-charcoal mb-6 text-balance">
+            Online Coaching, Wherever You Are in the World
+          </h2>
+          <div className="space-y-5 text-charcoal/70 text-base sm:text-lg leading-relaxed font-sans font-light">
+            <p>
+              Most of my coaching happens online over video call, which means I can work with you
+              wherever you are, in the UK or anywhere in the world. Sessions fit around your schedule
+              and time zone, with the same depth and confidentiality as meeting in a room.
+            </p>
+            <p>
+              GreenTrack is based in East Hendred, near Wantage, in Oxfordshire. If you are local and
+              prefer to meet face to face, in-person sessions are available across the county.
+            </p>
+            <p>
+              Oxfordshire sits at the heart of the UK&rsquo;s Motorsport Valley and its science and
+              engineering cluster. Having spent two decades developing people in elite motorsport, I
+              understand the pace, pressure and culture of technical, high-performance organisations,
+              and I also work with leaders in professional services, biotech, legal and regulated sectors.
+            </p>
+          </div>
+          <p className="text-charcoal/50 text-xs uppercase tracking-widest font-medium mt-8 mb-3">
+            In person across Oxfordshire, including
+          </p>
+          <ul className="flex flex-wrap gap-2" aria-label="Areas covered in person">
+            {OXFORDSHIRE_AREAS.map((town) => (
+              <li
+                key={town}
+                className="text-xs bg-cream text-charcoal/70 px-4 py-2 rounded-full border border-charcoal/10"
+              >
+                {town}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ── 6. PULL QUOTE ────────────────────────────────────────────────── */}
       <section className="bg-green py-24 sm:py-32" aria-label="Client testimonial">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div
@@ -269,7 +355,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 6. FINAL CTA ─────────────────────────────────────────────────── */}
+      {/* ── 7. FAQ ───────────────────────────────────────────────────────── */}
+      <section className="bg-white py-20 sm:py-28" aria-label="Frequently asked questions">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-green text-xs font-medium uppercase tracking-widest mb-5">FAQ</p>
+          <h2 className="font-display text-3xl sm:text-4xl text-charcoal mb-10 text-balance">
+            Questions About Working With Nicola
+          </h2>
+          <FaqAccordion items={homeFaqs} />
+          <p className="text-charcoal/60 text-sm font-sans mt-8 leading-relaxed">
+            Looking for practical guidance? Read{' '}
+            <Link href="/insights" className="text-green underline underline-offset-2 hover:text-darkGreen">
+              insights on leadership and motorsport careers
+            </Link>
+            .
+          </p>
+        </div>
+      </section>
+
+      {/* ── 8. FINAL CTA ─────────────────────────────────────────────────── */}
       <section className="bg-cream py-24 sm:py-32" aria-label="Call to action">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-green text-xs font-medium uppercase tracking-widest mb-5">Take the next step</p>

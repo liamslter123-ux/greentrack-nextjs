@@ -6,9 +6,11 @@ const primaryLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About Nicola' },
   { href: '/coaching', label: 'Coaching' },
+  { href: '/what-to-expect', label: 'What to Expect' },
   { href: '/mentoring', label: 'Mentoring' },
   { href: '/testimonials', label: 'Testimonials' },
   { href: '/contact', label: 'Contact' },
+  { href: '/insights', label: 'Insights' },
   { href: '/resources', label: 'Resources' },
 ]
 
@@ -39,8 +41,8 @@ export default function Footer() {
               &ldquo;Navigate the turns ahead and move forward with purpose.&rdquo;
             </p>
             <p className="text-cream/70 text-xs leading-relaxed mb-5">
-              Nicola Nevill is a Henley Business School qualified executive coach, ICF member, and
-              Chartered Fellow CIPD. Based in Oxfordshire, UK, working with leaders and organisations worldwide.
+              Nicola Nevill is a Henley Business School qualified executive coach, ICF member and
+              Chartered Fellow CIPD. Based in Oxfordshire, UK, coaching leaders online anywhere in the world.
             </p>
             <a
               href="mailto:nicola@greentrackcc.com"

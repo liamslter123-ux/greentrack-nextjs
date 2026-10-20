@@ -3,124 +3,45 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import MentorCard from '@/components/MentorCard'
 import FaqAccordion from '@/components/FaqAccordion'
+import { BASE_URL, DOUG_ID, NICOLA_ID, ORG_ID, breadcrumbs, faqSchema, jsonLd } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Motorsport & Engineering Mentoring | GreenTrack' },
+  title: { absolute: 'Motorsport & F1 Engineering Career Mentoring | GreenTrack' },
   description:
     'Motorsport and engineering career mentoring with Doug Nevill (30 years F1 design) and Nicola Nevill. Honest, practical guidance for engineers and motorsport professionals worldwide.',
   alternates: { canonical: '/mentoring' },
   openGraph: {
-    title: 'Motorsport & Engineering Mentoring | GreenTrack',
+    title: 'Motorsport & F1 Engineering Career Mentoring | GreenTrack',
     description: 'Career mentoring for Formula One, motorsport and engineering professionals. Real experience, honest conversations.',
     url: '/mentoring',
     images: [{ url: 'https://greentrackcc.com/racetrack-hero.jpeg' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Motorsport & Engineering Mentoring | GreenTrack',
+    title: 'Motorsport & F1 Engineering Career Mentoring | GreenTrack',
     description: 'Career mentoring grounded in 30 years of F1 design experience. Practical, honest support for motorsport and engineering careers.',
     images: ['https://greentrackcc.com/racetrack-hero.jpeg'],
   },
 }
 
-const BASE_URL = 'https://greentrackcc.com'
-
-const mentoringFaqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'Who is the motorsport mentoring for?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'The mentoring is for people entering motorsport or engineering, progressing early in their careers, leaving motorsport teams, or seeking clarity, confidence and direction. Doug and Nicola have both spent many years in high-performance engineering environments and understand the unique pressures and opportunities of this world.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Who are the mentors?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Doug Nevill spent close to 30 years working in Formula One design and now works in World Endurance Racing. Nicola Nevill worked in elite motorsport for over two decades, focusing on early-career development and career transitions. Together they offer both technical and career development mentoring.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How does mentoring work and what does it cost?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Sessions are flexible and personalised to your goals. Pricing is available on enquiry and reflects the time and expertise involved in offering thoughtful, tailored support. Each session focuses on practical, honest conversations with clear actions and direction.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How do I get into Formula One or professional motorsport as an engineer?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Getting into Formula One requires a relevant engineering degree, relevant experience, strong networking, and persistence. Most engineers start with placements or roles in lower-formula teams before progressing. Doug Nevill, who spent close to 30 years in F1 design, offers honest guidance on how hiring actually works inside a professional motorsport team and what employers look for at every career stage.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Is the mentoring only for engineers, or can others benefit?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'While Doug and Nicola have deep roots in the engineering and technical side of motorsport, the mentoring is open to anyone navigating a career in or around motorsport. This includes engineers, graduates, apprentices, and those in adjacent roles. Nicola also works with people navigating broader career transitions, including those leaving motorsport entirely and figuring out what comes next.',
-      },
-    },
-  ],
-}
-
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
-    { '@type': 'ListItem', position: 2, name: 'Motorsport Mentoring', item: `${BASE_URL}/mentoring` },
-  ],
-}
-
 const mentoringServiceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
+  '@id': `${BASE_URL}/mentoring#service`,
   name: 'Motorsport and Engineering Career Mentoring',
   url: `${BASE_URL}/mentoring`,
-  description: 'Paid, personalised career mentoring for motorsport and engineering professionals. Delivered by Doug Nevill (close to 30 years Formula One design) and Nicola Nevill.',
-  provider: [
-    { '@type': 'Person', name: 'Doug Nevill', url: `${BASE_URL}/mentoring` },
-    { '@type': 'Person', name: 'Nicola Nevill', url: `${BASE_URL}/about` },
-  ],
-  areaServed: 'Worldwide',
-  serviceType: 'Career Mentoring',
+  description:
+    'Paid, personalised career mentoring for people entering, progressing in or leaving motorsport and engineering. Delivered by Doug Nevill (close to 30 years in Formula One design) and Nicola Nevill.',
+  provider: [{ '@id': DOUG_ID }, { '@id': NICOLA_ID }],
+  brand: { '@id': ORG_ID },
+  serviceType: 'Career mentoring',
+  audience: { '@type': 'Audience', audienceType: 'Motorsport and engineering professionals, graduates and apprentices' },
+  areaServed: { '@type': 'Country', name: 'United Kingdom' },
   offers: {
     '@type': 'Offer',
     description: 'Pricing available on enquiry. Initial conversation is complimentary.',
     url: `${BASE_URL}/contact`,
   },
-}
-
-const dougPersonSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Doug Nevill',
-  jobTitle: 'Technical and Engineering Career Mentor',
-  url: `${BASE_URL}/mentoring`,
-  image: `${BASE_URL}/doug-portrait.jpg`,
-  description: 'Doug Nevill spent close to 30 years working in Formula One car design, including leading a team of 30 engineers. He now works in World Endurance Racing and offers honest, experience-based career guidance to engineers and motorsport professionals.',
-  sameAs: ['https://www.linkedin.com/in/doug-nevill-bb0a382a/'],
-  worksFor: {
-    '@type': 'Organization',
-    name: 'GreenTrack Coaching & Consulting Ltd',
-    url: BASE_URL,
-  },
-  knowsAbout: [
-    'Formula One Car Design',
-    'Motorsport Engineering',
-    'World Endurance Racing',
-    'Engineering Career Development',
-    'Technical Leadership',
-  ],
 }
 
 const mentoringFaqs = [
@@ -149,27 +70,22 @@ const mentoringFaqs = [
     answer:
       'While Doug and Nicola have deep roots in the engineering and technical side of motorsport, the mentoring is open to anyone navigating a career in or around motorsport. This includes engineers, graduates, apprentices, and those in adjacent roles. Nicola also works with people navigating broader career transitions, including those leaving motorsport entirely.',
   },
+  {
+    question: 'Is mentoring available in person or online?',
+    answer:
+      'Both. Doug and Nicola are based in Oxfordshire, in the heart of the UK motorsport industry, so in-person sessions are possible locally. Most mentoring takes place by video call, which works for people anywhere in the UK or overseas.',
+  },
 ]
+
+const mentoringFaqSchema = faqSchema(mentoringFaqs)
+const breadcrumbSchema = breadcrumbs([{ name: 'Motorsport Mentoring', path: '/mentoring' }])
 
 export default function Mentoring() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(mentoringFaqSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(mentoringServiceSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(dougPersonSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(mentoringFaqSchema)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbSchema)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(mentoringServiceSchema)} />
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section className="bg-darkGreen pt-20" aria-label="Motorsport and engineering mentoring">
@@ -185,14 +101,15 @@ export default function Mentoring() {
               className="font-display text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mb-6 text-balance"
               style={{ animation: 'fadeInUp 0.7s ease 0.35s both' }}
             >
-              Mentoring Grounded in Engineering and Motorsport Experience
+              Motorsport &amp; Engineering Career Mentoring
             </h1>
             <p
               className="text-cream/60 text-lg font-sans font-light leading-relaxed"
               style={{ animation: 'fadeInUp 0.6s ease 0.55s both' }}
             >
-              Honest conversations and practical direction from people who have genuinely lived this world.
-              Career mentoring for Formula One, World Endurance Racing and engineering professionals.
+              Mentoring grounded in close to 30 years of Formula One design and two decades developing
+              people in elite motorsport. Honest conversations and practical direction for engineers,
+              graduates and anyone entering, progressing in or leaving motorsport.
             </p>
           </div>
         </div>
@@ -216,6 +133,17 @@ export default function Mentoring() {
             <p>
               Sessions are tailored and flexible. Pricing is available on enquiry, reflecting the time
               and experience involved in offering thoughtful, personalised support.
+            </p>
+            <p className="text-base">
+              Free guides:{' '}
+              <Link href="/insights/how-to-get-into-formula-1-engineering" className="text-green underline underline-offset-2 hover:text-darkGreen">
+                how to get into Formula 1 as an engineer
+              </Link>{' '}
+              and{' '}
+              <Link href="/insights/leaving-motorsport-career-transition" className="text-green underline underline-offset-2 hover:text-darkGreen">
+                navigating a move out of motorsport
+              </Link>
+              .
             </p>
           </div>
         </div>
@@ -290,7 +218,18 @@ export default function Mentoring() {
                 'Career confidence & progression',
                 'CV and positioning support',
               ]}
+              linkedIn="https://www.linkedin.com/in/nicolasalter/"
             />
+          </div>
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 text-sm">
+            <Link href="/mentoring/doug-nevill" className="inline-flex items-center gap-2 text-green hover:text-darkGreen font-medium group">
+              Read Doug&rsquo;s full profile
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
+            </Link>
+            <Link href="/about" className="inline-flex items-center gap-2 text-green hover:text-darkGreen font-medium group">
+              Read Nicola&rsquo;s full profile
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>

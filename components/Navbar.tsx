@@ -12,7 +12,7 @@ const navLinks = [
   { href: '/coaching', label: 'Coaching' },
   { href: '/mentoring', label: 'Mentoring' },
   { href: '/testimonials', label: 'Testimonials' },
-  { href: '/resources', label: 'Resources' },
+  { href: '/insights', label: 'Insights' },
 ]
 
 export default function Navbar() {

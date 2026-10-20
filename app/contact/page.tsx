@@ -127,6 +127,13 @@ export default function Contact() {
                   <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
                 </Link>
                 <Link
+                  href="/what-to-expect"
+                  className="flex items-center gap-2 text-charcoal/65 hover:text-green transition-colors duration-200 text-sm group"
+                >
+                  What to expect from coaching
+                  <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
+                </Link>
+                <Link
                   href="/mentoring"
                   className="flex items-center gap-2 text-charcoal/65 hover:text-green transition-colors duration-200 text-sm group"
                 >
